@@ -16,33 +16,46 @@
 
   <link rel="icon" type="image/png" href="{% static "portfolio/Logo.png" %}">
 
-  <title>Ranjith Raja Simha</title>
+  <title>moments</title>
 </head>
 
 <body>
 
-  <nav id="topNav" class="navbar navbar-expand-md navbar-light">
+  <nav id="topNav" class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand" href="{% url 'home' %}">
         <img src="{% static "portfolio/Logo.png" %}" width="30" height="30" class="d-inline-block align-top" alt="Nick's Logo">
-        <span>Ranjith Raja Simha</span>
+        <span>moments</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+                <!-- <li class='nav-item'>
+                  <label>{{ user.username }}</label>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+                    <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+                        {% csrf_token %}
+                        <button id="signOutBtn" type="submit">Logout</button>
+                    </form>
+                </li>
+          {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loginuser' %}">Login</a>
+                </li>
+          {% endif %}
           <!-- <li class="nav-item">
-            <a class="nav-link" href="{% static "portfolio/Profile_RanjithKowthalamRaghavendra.pdf" %}">Resume</a>
-          </li> -->
-          <li class="nav-item">
             <a class="nav-link" href="https://www.linkedin.com/in/ranjith-raja-simha-60423657/" target="_blank">LinkedIn</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://twitter.com/ZappyCode" target="_blank">Twitter</a>
-          </li>
+          </li> -->
           <li>
-            <a role="button" href="{% url 'blog:all_blogs' %}" class="btn btn-primary">Blog</a>
+            <a role="button" href="{% url 'blog:all_blogs' %}" class="btn btn-primary">Blogs</a>
           </li>
         </ul>
       </div>

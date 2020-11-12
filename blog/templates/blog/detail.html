@@ -5,7 +5,10 @@
 
 <h2>{{ blog.title }}</h2>
 <h5>{{ blog.date }}</h5>
-<p>{{ blog.description }}</p>
+<!-- <p>{{ blog.description }}</p> -->
 <img src="{{ blog.image.url }}">
+{% if blog.audio_description %}
+<audio src="{{ blog.audio_description.url }}" controls></audio>
+{% endif %}
 
 {% endblock %}

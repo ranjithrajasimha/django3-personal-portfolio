@@ -9,8 +9,12 @@
 <br>
 <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
 <h5>{{ blog.date|date:'M d Y'|upper }}</h5>
-<p>{{ blog.description|striptags|truncatechars:1000 }}</p>
-<img src="{{ blog.image.url }}" height="600" width="900">
+<!-- <p>{{ blog.description|striptags|truncatechars:1000 }}</p> -->
+<img src="{{ blog.image.url }}" height="500">
+{% if blog.audio_description %}
+<br>
+<audio src="{{ blog.audio_description.url }}" controls></audio>
+{% endif %}
 {% endfor %}
 
 {% endblock %}

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['ranjithrajasimha.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'clearcache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,6 +126,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = '/login'
 
 try:
     from .local_settings import *
